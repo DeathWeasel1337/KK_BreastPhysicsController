@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace BreastPhysicsController.UI.Parts
 {
     public class PresetSelect : SelectList
     {
-        string _presetDir;
-        public PresetSelect(string presetDir, string emptyString, float buttonWidth=0, float buttonHeight=0, float listWidth=0, float listHeight=0)
+        private readonly string _presetDir;
+        public PresetSelect(string presetDir, string emptyString, float buttonWidth = 0, float buttonHeight = 0, float listWidth = 0, float listHeight = 0)
             : base(null, emptyString, true, buttonWidth, buttonHeight, listWidth, listHeight)
         {
             _presetDir = presetDir;
@@ -18,8 +17,10 @@ namespace BreastPhysicsController.UI.Parts
 
         private void ReloadPresetDir()
         {
-            IEnumerable<string> xmls = System.IO.Directory.GetFiles(_presetDir, "*.xml").ToList();
-            xmls = xmls.Select(x => System.IO.Path.GetFileNameWithoutExtension(x));
+            if (!Directory.Exists(_presetDir))
+                Directory.CreateDirectory(_presetDir);
+            IEnumerable<string> xmls = Directory.GetFiles(_presetDir, "*.xml").ToList();
+            xmls = xmls.Select(x => Path.GetFileNameWithoutExtension(x));
             List<string> newList = new List<string>();
             newList.Add("Cancel loading preset.");
             newList.AddRange(xmls);
@@ -32,9 +33,7 @@ namespace BreastPhysicsController.UI.Parts
 
             if (_list == null || _list.Length == 0)
             {
-
                 GUILayout.Button(_emptyString);
-
             }
             else
             {
@@ -44,7 +43,7 @@ namespace BreastPhysicsController.UI.Parts
                     if (_useEmptyStringAlways) buttonLabel = _emptyString;
                     else buttonLabel = _list[_selectedIndex];
 
-                    if (_width1 <= 0 && _height1<=0)
+                    if (_width1 <= 0 && _height1 <= 0)
                     {
                         if (GUILayout.Button(buttonLabel))
                         {
@@ -54,7 +53,7 @@ namespace BreastPhysicsController.UI.Parts
                     }
                     else if (_width1 <= 0)
                     {
-                        if (GUILayout.Button(buttonLabel,GUILayout.Height(_height1)))
+                        if (GUILayout.Button(buttonLabel, GUILayout.Height(_height1)))
                         {
                             ReloadPresetDir();
                             _show = true;
@@ -70,7 +69,7 @@ namespace BreastPhysicsController.UI.Parts
                     }
                     else
                     {
-                        if (GUILayout.Button(buttonLabel, GUILayout.Height(_width1),GUILayout.Height(_height1)))
+                        if (GUILayout.Button(buttonLabel, GUILayout.Height(_width1), GUILayout.Height(_height1)))
                         {
                             ReloadPresetDir();
                             _show = true;
@@ -100,7 +99,7 @@ namespace BreastPhysicsController.UI.Parts
                     int selected = -1;
                     selected = GUILayout.SelectionGrid(selected, _list, 1);
 
-                    if (selected==0)
+                    if (selected == 0)
                     {
                         changed = false;
                         _selectedIndex = selected;
@@ -123,9 +122,9 @@ namespace BreastPhysicsController.UI.Parts
 
         public string GetSelectedFilePath()
         {
-            if(_selectedIndex>0)
+            if (_selectedIndex > 0)
             {
-                return System.IO.Path.Combine(_presetDir, _list[_selectedIndex]) + ".xml";
+                return Path.Combine(_presetDir, _list[_selectedIndex]) + ".xml";
             }
             return null;
         }
