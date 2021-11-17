@@ -1,6 +1,4 @@
 ﻿using HarmonyLib;
-using BepInEx.Harmony;
-
 
 namespace BreastPhysicsController
 {
@@ -8,7 +6,7 @@ namespace BreastPhysicsController
     {
         public static void InstallHooks()
         {
-            var harmony = HarmonyWrapper.PatchAll(typeof(Hooks));
+            Harmony.CreateAndPatchAll(typeof(Hooks));
         }
 
         //for performance imporovement. but it makes them less compatible with other logic.
