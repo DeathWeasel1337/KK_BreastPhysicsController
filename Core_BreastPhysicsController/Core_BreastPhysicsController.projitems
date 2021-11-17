@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>80fb3fe0-6444-41c9-85b8-7588ec87958c</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Core_BreastPhysicsController</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BreastPhysicsController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharaParamControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Compatibility\BreastDynamicBoneParameter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Compatibility\XMLDynamicBoneParameter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConfigGlobal.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DBControllerManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExtendedDataIO.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Hooks.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParamBackup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParamBone.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParamBustCustom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParamBustOrg.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParamChangedInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParamChara.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParamCharaController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParamHipCustom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParamHipOrg.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PluginPath.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\ControllerWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\DialogSavePreset.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\EditorBust.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\EditorHip.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\MessageBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\PartsCustom\CharaSelect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\PartsCustom\CoordinateSelect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\PartsCustom\PresetSelect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\PartsCustom\ToggleEnabled.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Parts\SelectableButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Parts\SelectList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Parts\SliderTextRef.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Parts\Toggle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Parts\ToggleRef.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\ToolsWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Util\ResourceLoader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Util\Skin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Util\Style.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Util\WindowID.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)XMLParamBust.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)XMLParamHip.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)XMLParamSet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)XMLPresetIO.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)UI\Parts\SliderTextSet.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)UI\Resource\TexWindowBase.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)UI\Resource\TexWindowContents.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)UI\Resource\TexWindowInside.png" />
+  </ItemGroup>
+</Project>
